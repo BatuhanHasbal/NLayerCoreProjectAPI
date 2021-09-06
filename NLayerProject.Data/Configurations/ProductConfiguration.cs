@@ -11,7 +11,7 @@ namespace NLayerProject.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.HasKey(x => x.CategoryId);
+            builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn(); // yeni ürün eklendikçe ıd yi 1er arttır
             builder.Property(x => x.Name).IsRequired().HasMaxLength(200); //zorunlu ve max 200 karakter
             builder.Property(x => x.Stock).IsRequired();

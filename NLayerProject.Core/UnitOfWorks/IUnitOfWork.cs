@@ -8,8 +8,8 @@ namespace NLayerProject.Core.UnitOfWorks
 {
     public interface IUnitOfWork
     {
-        IProductRepository Product { get; }
-        ICategoryRepository Category { get; }
+        IProductRepository Products { get; }
+        ICategoryRepository categories { get; }
         Task CommitAsync();
         void Commit();
     }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace NLayerProject.Core.Services
 {
-    public interface ICategoryService:IService<Category>
+    public interface ICategoryService : IService<Category>
     {
-        Task<Category> GetWithProductByIdAsync(int categoryId);
+        Task<Category> GetWithProductsByIdAsync(int categoryId);
 
-        //Category özgü methodlar varsa burada tanımlanır.
+        //Category özgü methodlarınız varsa burada tanımlayabilirsiniz.
     }
 }

@@ -15,8 +15,10 @@ namespace NLayerProject.Service.Services
         public readonly IUnitOfWork _unitOfWork;
         private readonly IRepository<TEntity> _repository;
 
-        public Service(IUnitOfWork unitOfWork, IRepository<Product> repository)
+        public Service(IUnitOfWork unitOfWork, IRepository<TEntity> repository)
         {
+            _unitOfWork = unitOfWork;
+            _repository = repository;
         }
 
         public async Task<TEntity> AddAsync(TEntity entity)

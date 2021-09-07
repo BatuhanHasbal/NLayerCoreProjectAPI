@@ -11,9 +11,12 @@ namespace NLayerProject.Data.UnitOfWorks
     public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
+
         private ProductRepository _productRepository;
         private CategoryRepository _CategoryRepository;
+
         public IProductRepository Products => _productRepository = _productRepository ?? new ProductRepository(_context);
+
         public ICategoryRepository categories => _CategoryRepository = _CategoryRepository ?? new CategoryRepository(_context);
 
         public UnitOfWork(AppDbContext appDbContext)
@@ -28,7 +31,7 @@ namespace NLayerProject.Data.UnitOfWorks
 
         public async Task CommitAsync()
         {
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

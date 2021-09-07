@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 
 namespace NLayerProject.Data.Repostrories
 {
-    
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
-        public Repository(DbContext context)
+
+        public Repository(AppDbContext context)
         {
-            _context = context;   //veritabanına erişim
-            _dbSet = context.Set<TEntity>(); //tablolara erişim
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
+
         public async Task AddAsync(TEntity entity)
         {
             await _dbSet.AddAsync(entity);
@@ -44,12 +45,12 @@ namespace NLayerProject.Data.Repostrories
             return await _dbSet.FindAsync(id);
         }
 
-        public  void Remove(TEntity entity)
+        public void Remove(TEntity entity)
         {
-             _dbSet.Remove(entity);
+            _dbSet.Remove(entity);
         }
 
-        public  void RemoveRange(IEnumerable<TEntity> entities)
+        public void RemoveRange(IEnumerable<TEntity> entities)
         {
             _dbSet.RemoveRange(entities);
         }
@@ -59,9 +60,10 @@ namespace NLayerProject.Data.Repostrories
             return await _dbSet.SingleOrDefaultAsync(predicate);
         }
 
-        public  TEntity Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
+
             return entity;
         }
     }

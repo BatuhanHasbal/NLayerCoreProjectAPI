@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace NLayerProject.Core.Repositories
 {
-    public interface ICategoryRepository :IRepository<Category> //Irepository den miras aldık
+    public interface ICategoryRepository : IRepository<Category>
     {
-        Task<Category> GetWithProductByIdAsync(int categoryId);
+        Task<Category> GetWithProductsByIdAsync(int categoryId);
     }
 }

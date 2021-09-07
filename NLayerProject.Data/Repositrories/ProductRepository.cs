@@ -11,15 +11,14 @@ namespace NLayerProject.Data.Repostrories
     public class ProductRepository : Repository<Product>, IProductRepository
     {
         private AppDbContext _appDbContext { get => _context as AppDbContext; }
-        public ProductRepository(DbContext context) : base(context)
-        {
 
+        public ProductRepository(AppDbContext context) : base(context)
+        {
         }
 
         public async Task<Product> GetWithCategoryByIdAsync(int productId)
         {
-            return await _appDbContext.Products.Include(x => x.Category).FirstOrDefaultAsync(x => x.Id == productId);
-
+            return await _appDbContext.Products.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == productId);
         }
     }
 }
